@@ -153,7 +153,7 @@ void loop()
 }
 ~~~
 # CIRCUIT DIAGRAM:
-![398443035-f08a3329-cc7f-4cbb-a4ee-192703536a88](https://github.com/user-attachments/assets/9eb2c6bc-17c2-4ad0-a4ee-cf948b8c4e00)
+![image](https://github.com/user-attachments/assets/2ffd548e-7ff6-4303-a4bf-496857d22945)
 
 # OUTPUT:
 ![398443177-ecc19feb-a8c7-43a4-8151-f8fe282b5c64](https://github.com/user-attachments/assets/eeffdc78-6a9f-41c2-8a78-69834716ced1)
