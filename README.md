@@ -1,4 +1,6 @@
-# Monitoring-distance-value-in-Thing-speak-cloud-using-ultrasonic-sensor-and-ESP32-controller
+# NAME: THARUN P S
+# REF NO: 24900117
+# EX.NO: 6 Monitoring-distance-value-in-Thing-speak-cloud-using-ultrasonic-sensor-and-ESP32-controller
 
 # Uploading ultrasonic sensor data in Thing Speak cloud
 
@@ -96,8 +98,66 @@ Prototype and build IoT systems without setting up servers or developing web sof
 
  
 # PROGRAM:
+~~~
+#include "ThingSpeak.h"
+#include <WiFi.h>
+
+char ssid[] = "tharunps"; //SSID
+char pass[] = "tharun#123"; // Password
+
+
+const int trigger = 25;
+const int echo = 26;
+long T;
+float distanceCM;
+WiFiClient  client;
+
+unsigned long myChannelField =2792164 ; // Channel ID
+const int ChannelField = 1; // Which channel to write data
+const char * myWriteAPIKey = "HF6JQNUBORCD8NBU"; // Your write API Key
+
+void setup()
+{
+  Serial.begin(115200);
+  pinMode(trigger, OUTPUT);
+  pinMode(echo, INPUT);
+  WiFi.mode(WIFI_STA);
+  ThingSpeak.begin(client);
+}
+void loop()
+{
+  if (WiFi.status() != WL_CONNECTED)
+  {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    while (WiFi.status() != WL_CONNECTED)
+    {
+      WiFi.begin(ssid, pass);
+      Serial.print(".");
+      delay(5000);
+    }
+    Serial.println("\nConnected.");
+  }
+  digitalWrite(trigger, LOW);
+  delay(1);
+  digitalWrite(trigger, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigger, LOW);
+  T = pulseIn(echo, HIGH);
+  distanceCM = T * 0.034;
+  distanceCM = distanceCM / 2;
+  Serial.print("Distance in cm: ");
+  Serial.println(distanceCM);
+  ThingSpeak.writeField(myChannelField, ChannelField, distanceCM, myWriteAPIKey);
+  delay(1000);
+}
+~~~
 # CIRCUIT DIAGRAM:
+![398443035-f08a3329-cc7f-4cbb-a4ee-192703536a88](https://github.com/user-attachments/assets/9eb2c6bc-17c2-4ad0-a4ee-cf948b8c4e00)
+
 # OUTPUT:
+![398443177-ecc19feb-a8c7-43a4-8151-f8fe282b5c64](https://github.com/user-attachments/assets/eeffdc78-6a9f-41c2-8a78-69834716ced1)
+
 # RESULT:
 Thus the distance values are updated in the Thing speak cloud using ESP32 controller.
 
