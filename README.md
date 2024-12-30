@@ -1,6 +1,6 @@
 # NAME: THARUN P S
 # REF NO: 24900117
-# EX.NO: 6 Monitoring-distance-value-in-Thing-speak-cloud-using-ultrasonic-sensor-and-ESP32-controller
+# EX.NO: 6 Monitoring-distance-value-in-Thing-speak-cloud-using-ultrasonic-sensor-and-ESP32
 
 # Uploading ultrasonic sensor data in Thing Speak cloud
 
